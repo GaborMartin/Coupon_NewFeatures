@@ -10,6 +10,7 @@
 <c:if test="${empty error}">
     <p>ID: ${shop.id}</p>
     <p>Name: ${shop.name}</p>
+    <p>Creator ID: ${shop.creatorId}
 </c:if>
 <jsp:include page="../snippets/show-error.jsp"/>
 <jsp:include page="../snippets/to-profile.jsp"/>

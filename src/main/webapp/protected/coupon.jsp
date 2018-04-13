@@ -10,6 +10,7 @@
 <p>ID: ${coupon.id}</p>
 <p>Name: ${coupon.name}</p>
 <p>Percentage: ${coupon.percentage}%</p>
+<p>Creator ID: ${coupon.creatorId}</p>
 <p>Shops:
     <ul>
         <c:forEach var="shop" items="${couponShops}">

@@ -12,6 +12,7 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
+            <th>Creator ID</th>
         </tr>
     </thead>
     <tbody>
@@ -19,6 +20,7 @@
             <tr>
                 <td>${shop.id}</td>
                 <td><a href="shop?id=<c:out value="${shop.id}"/>">${shop.name}</a></td>
+                <td>${shop.creatorId}</td>
             </tr>
         </c:forEach>
     </tbody>

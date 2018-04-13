@@ -13,6 +13,7 @@
         <th>ID</th>
         <th>Name</th>
         <th>Percentage (%)</th>
+        <th>Creator ID</th>
     </tr>
     </thead>
     <tbody>
@@ -21,6 +22,7 @@
             <td>${coupon.id}</td>
             <td><a href="coupon?id=<c:out value="${coupon.id}"/>">${coupon.name}</a></td>
             <td>${coupon.percentage}</td>
+            <td>${coupon.creatorId}</td>
         </tr>
     </c:forEach>
     </tbody>
