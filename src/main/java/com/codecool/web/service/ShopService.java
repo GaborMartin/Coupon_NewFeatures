@@ -12,5 +12,7 @@ public interface ShopService {
 
     Shop getShop(String id) throws SQLException, ServiceException;
 
-    Shop addShop(String name) throws SQLException, ServiceException;
+    Shop addShop(String name, int creator_id) throws SQLException, ServiceException;
+
+    List<Shop> getShopsByCreatorId(int creatorId) throws SQLException;
 }

@@ -22,6 +22,11 @@ public final class SimpleShopService implements ShopService {
     }
 
     @Override
+    public List<Shop> getShopsByCreatorId(int creatorId) throws SQLException {
+        return shopDao.findAllByCreatorId(creatorId);
+    }
+
+    @Override
     public Shop getShop(String id) throws SQLException, ServiceException {
         try {
             Shop shop = shopDao.findById(Integer.parseInt(id));
@@ -37,9 +42,9 @@ public final class SimpleShopService implements ShopService {
     }
 
     @Override
-    public Shop addShop(String name) throws SQLException, ServiceException {
+    public Shop addShop(String name, int creator_id) throws SQLException, ServiceException {
         try {
-            return shopDao.add(name);
+            return shopDao.add(name, creator_id);
         } catch (IllegalArgumentException ex) {
             throw new ServiceException(ex.getMessage());
         }
