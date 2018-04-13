@@ -26,6 +26,16 @@ public final class SimpleCouponService implements CouponService {
     }
 
     @Override
+    public List<Coupon> getAllForShopByCreatorId(int shopId, int creatorId) throws SQLException {
+        return couponDao.findCouponsForShopByCreatorId(shopId, creatorId);
+    }
+
+    @Override
+    public List<Coupon> getAllByCreatorId(int id) throws SQLException {
+        return couponDao.findAllByCreatorId(id);
+    }
+
+    @Override
     public Coupon getCoupon(String id) throws SQLException, ServiceException {
         try {
             return couponDao.findById(Integer.parseInt(id));
@@ -37,9 +47,9 @@ public final class SimpleCouponService implements CouponService {
     }
 
     @Override
-    public Coupon addCoupon(String name, String percentage) throws SQLException, ServiceException {
+    public Coupon addCoupon(String name, String percentage, int creator_id) throws SQLException, ServiceException {
         try {
-            return couponDao.add(name, Integer.parseInt(percentage));
+            return couponDao.add(name, Integer.parseInt(percentage), creator_id);
         } catch (NumberFormatException ex) {
             throw new ServiceException("Percentage must be an integer");
         } catch (IllegalArgumentException ex) {
