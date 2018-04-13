@@ -11,7 +11,9 @@ public interface ShopDao {
 
     List<Shop> findAllByCouponId(int couponId) throws SQLException;
 
+    List<Shop> findAllByCreatorId(int creatorId) throws SQLException;
+
     Shop findById(int id) throws SQLException;
 
-    Shop add(String name) throws SQLException;
+    Shop add(String name, int creator_id) throws SQLException;
 }
