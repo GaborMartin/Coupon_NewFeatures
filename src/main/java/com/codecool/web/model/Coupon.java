@@ -6,11 +6,13 @@ public final class Coupon extends AbstractModel {
 
     private final String name;
     private final int percentage;
+    private final int creatorId;
 
-    public Coupon(int id, String name, int percentage) {
+    public Coupon(int id, String name, int percentage, int creatorId) {
         super(id);
         this.name = name;
         this.percentage = percentage;
+        this.creatorId = creatorId;
     }
 
     public String getName() {
@@ -21,6 +23,9 @@ public final class Coupon extends AbstractModel {
         return percentage;
     }
 
+    public int getCreatorId() {
+        return creatorId;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -34,6 +39,6 @@ public final class Coupon extends AbstractModel {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), name, percentage);
+        return Objects.hash(super.hashCode(), name, percentage, creatorId);
     }
 }
