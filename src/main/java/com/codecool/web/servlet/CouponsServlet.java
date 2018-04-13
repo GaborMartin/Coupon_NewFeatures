@@ -5,6 +5,7 @@ import com.codecool.web.dao.ShopDao;
 import com.codecool.web.dao.database.DatabaseCouponDao;
 import com.codecool.web.dao.database.DatabaseShopDao;
 import com.codecool.web.model.Coupon;
+import com.codecool.web.model.User;
 import com.codecool.web.service.CouponService;
 import com.codecool.web.service.exception.ServiceException;
 import com.codecool.web.service.simple.SimpleCouponService;
@@ -43,13 +44,15 @@ public final class CouponsServlet extends AbstractServlet {
             CouponDao couponDao = new DatabaseCouponDao(connection);
             ShopDao shopDao = new DatabaseShopDao(connection);
             CouponService couponService = new SimpleCouponService(couponDao, shopDao);
+            User user = (User) req.getSession().getAttribute("user");
 
             String name = req.getParameter("name");
             String percentage = req.getParameter("percentage");
+            int creator_id = user.getId();
 
-            Coupon coupon = couponService.addCoupon(name, percentage);
+            Coupon coupon = couponService.addCoupon(name, percentage, creator_id);
 
-            String info = String.format("Coupon %s with id %s has been created", coupon.getName(), coupon.getId());
+            String info = String.format("Coupon %s with id %s, creator id %s has been created", coupon.getName(), coupon.getId(), coupon.getCreatorId());
             req.setAttribute("info", info);
         } catch (SQLException ex) {
             throw new ServletException(ex);
