@@ -55,12 +55,12 @@ public final class DatabaseShopDao extends AbstractDao implements ShopDao {
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, creatorId);
             try (ResultSet resultSet = statement.executeQuery()) {
-                if (resultSet.next()) {
+                while (resultSet.next()) {
                     shops.add(fetchShop(resultSet));
                 }
             }
         }
-        return null;
+        return shops;
     }
 
     @Override
