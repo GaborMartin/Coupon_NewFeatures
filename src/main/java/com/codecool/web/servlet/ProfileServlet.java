@@ -28,10 +28,10 @@ public final class ProfileServlet extends AbstractServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = (User) req.getSession().getAttribute("user");
-        req.setAttribute("user", user);
-
         try (Connection connection = getConnection(req.getServletContext())) {
+            User user = (User) req.getSession().getAttribute("user");
+            req.setAttribute("user", user);
+
             CouponDao couponDao = new DatabaseCouponDao(connection);
             ShopDao shopDao = new DatabaseShopDao(connection);
             CouponService couponService = new SimpleCouponService(couponDao, shopDao);

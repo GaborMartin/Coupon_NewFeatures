@@ -30,8 +30,10 @@ public final class ShopServlet extends AbstractServlet {
         try (Connection connection = getConnection(req.getServletContext())) {
             ShopDao shopDao = new DatabaseShopDao(connection);
             ShopService shopService = new SimpleShopService(shopDao);
+
             CouponDao couponDao = new DatabaseCouponDao(connection);
             CouponService couponService = new SimpleCouponService(couponDao, shopDao);
+
             User user = (User) req.getSession().getAttribute("user");
 
             String shopId = req.getParameter("id");
