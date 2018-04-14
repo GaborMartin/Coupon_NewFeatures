@@ -36,7 +36,7 @@ public final class CouponsServlet extends AbstractServlet {
             req.setAttribute("coupons", coupons);
             req.getRequestDispatcher("coupons.jsp").forward(req, resp);
         } catch (SQLException ex) {
-            throw new ServletException(ex);
+            req.setAttribute("error", "Invalid database operation");
         }
     }
 
